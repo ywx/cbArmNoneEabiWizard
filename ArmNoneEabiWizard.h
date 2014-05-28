@@ -18,9 +18,34 @@
 #endif
 
 #include <cbplugin.h> // for "class cbPlugin"
+//#include <settings.h> // needed to use the Code::Blocks SDK
+
+struct JLinkDeviceInfo
+{
+    wxString      Manufacturer;
+    wxString      DeviceName;
+    wxString      Core;
+    wxArrayString ROMAreas;
+    wxArrayString ROMSizes;
+    wxArrayString RAMAreas;
+    wxArrayString RAMSizes;
+};
+
+WX_DECLARE_OBJARRAY(JLinkDeviceInfo, JLinkDevices);
 
 class ArmNoneEabiWizard : public cbPlugin
 {
+    public:
+
+        // needed for binding with SqPlus
+        ArmNoneEabiWizard& operator=(cb_unused const ArmNoneEabiWizard& rhs) // prevent assignment operator
+        {
+            cbThrow( _T("Can't use ArmNoneEabiWizard's operator=") );
+            return *this;
+		}
+	private:
+        ArmNoneEabiWizard(cb_unused const ArmNoneEabiWizard& rhs); // prevent copy construction
+
     public:
         /** Constructor. */
         ArmNoneEabiWizard();
@@ -93,6 +118,19 @@ class ArmNoneEabiWizard : public cbPlugin
           * @return The plugin should return true if it needed the toolbar, false if not
           */
         virtual bool BuildToolBar(wxToolBar* toolBar);
+
+        // Script Function
+        void      GetJLinkDevices(void);
+        wxString  GetManufacturerDevices(const wxString& Manufacturer);
+        wxString  GetDeviceCore(const wxString& DeviceName);
+        wxString  GetDeviceROMStart(const wxString& DeviceName);
+        wxString  GetDeviceROMSize(const wxString& DeviceName);
+        wxString  GetDeviceRAMStart(const wxString& DeviceName);
+        wxString  GetDeviceRAMSize(const wxString& DeviceName);
+
+        // Register Script Bindings
+        void RegisterWizard();
+
     protected:
         /** Any descendent plugin should override this virtual method and
           * perform any necessary initialization. This method is called by
@@ -116,6 +154,8 @@ class ArmNoneEabiWizard : public cbPlugin
           *         behaviour is undefined...
           */
         virtual void OnRelease(bool appShutDown);
+
+        JLinkDevices m_JLinkDevices;
 
     private:
         DECLARE_EVENT_TABLE();

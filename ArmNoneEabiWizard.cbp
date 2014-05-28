@@ -9,8 +9,10 @@
 			<Target title="Win32 Debug">
 				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
 				<Option object_output=".objs/Debug" />
+				<Option external_deps="$(#cb)/devel/libcodeblocks.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
+				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --no-splash-screen --verbose -p debug" />
 				<Option host_application="$(#cb)/devel/codeblocks.exe" />
 				<Option run_host_application_in_terminal="0" />
 				<Compiler>
@@ -29,11 +31,17 @@
 					<Add option="-DWX_PRECOMP" />
 					<Add option="-DwxUSE_UNICODE" />
 					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/include/scripting/include" />
+					<Add directory="$(#cb)/include/scripting/sqplus" />
 					<Add directory="$(#cb)/sdk/wxscintilla/include" />
 					<Add directory="$(#wx.include)" />
 					<Add directory="$(#wx.lib)/gcc_dll/mswu" />
 				</Compiler>
 				<Linker>
+					<Add option="-Wl,--enable-auto-image-base" />
+					<Add option="-Wl,--add-stdcall-alias" />
+					<Add option="-Wl,--enable-auto-import" />
+					<Add option="-Wl,--no-undefined" />
 					<Add option="-mthreads" />
 					<Add library="codeblocks" />
 					<Add library="wxmsw28u" />
@@ -49,6 +57,7 @@
 			<Target title="Win32 Release">
 				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
 				<Option object_output=".objs/Release" />
+				<Option external_deps="$(#cb)/devel/libcodeblocks.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option host_application="$(#cb)/devel/codeblocks.exe" />
@@ -68,12 +77,18 @@
 					<Add option="-DWX_PRECOMP" />
 					<Add option="-DwxUSE_UNICODE" />
 					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/include/scripting/include" />
+					<Add directory="$(#cb)/include/scripting/sqplus" />
 					<Add directory="$(#cb)/sdk/wxscintilla/include" />
 					<Add directory="$(#wx.include)" />
 					<Add directory="$(#wx.lib)/gcc_dll/mswu" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-Wl,--enable-auto-image-base" />
+					<Add option="-Wl,--add-stdcall-alias" />
+					<Add option="-Wl,--enable-auto-import" />
+					<Add option="-Wl,--no-undefined" />
 					<Add option="-mthreads" />
 					<Add library="codeblocks" />
 					<Add library="wxmsw28u" />
@@ -89,6 +104,7 @@
 			<Target title="Linux default">
 				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
 				<Option type="3" />
+				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --no-splash-screen --verbose -p debug" />
 				<Option compiler="gcc" />
 				<Option host_application="codeblocks" />
 				<Option run_host_application_in_terminal="0" />
@@ -100,7 +116,13 @@
 					<Add option="-fPIC" />
 					<Add option="-DEXPORT_FUNC" />
 					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/include/scripting/include" />
+					<Add directory="$(#cb)/include/scripting/sqplus" />
 					<Add directory="$(#cb)/sdk/wxscintilla/include" />
+					<Add directory="$(#cb)/include/codeblocks" />
+					<Add directory="$(#cb)/include/codeblocks/scripting/include" />
+					<Add directory="$(#cb)/include/codeblocks/scripting/sqplus" />
+					<Add directory="$(#cb)/include/codeblocks/wxscintilla/include" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config --libs codeblocks`" />
@@ -126,7 +148,13 @@
 					<Add option="-fPIC" />
 					<Add option="-DEXPORT_FUNC" />
 					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/include/scripting/include" />
+					<Add directory="$(#cb)/include/scripting/sqplus" />
 					<Add directory="$(#cb)/sdk/wxscintilla/include" />
+					<Add directory="$(#cb)/include/codeblocks" />
+					<Add directory="$(#cb)/include/codeblocks/scripting/include" />
+					<Add directory="$(#cb)/include/codeblocks/scripting/sqplus" />
+					<Add directory="$(#cb)/include/codeblocks/wxscintilla/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
