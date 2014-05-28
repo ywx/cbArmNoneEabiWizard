@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_plugin_manifest_file>
+    <SdkVersion major="1" minor="19"  release="0" />
+    <Plugin name="ArmNoneEabiWizard">
+        <Value title="Arm none eabi Wizard Plugin" />
+        <Value version="0.1" />
+        <Value description="Code::Blocks Plugin to provide a wizard for new
+ gcc-arm-none-eabi Project" />
+        <Value author="YWX" />
+        <Value authorEmail="wxFortranIndent@163.com" />
+        <Value authorWebsite="https://github.com/ywx" />
+        <Value thanksTo="The whole Code::Blocks team for Code::Blocks
+Johannes Lask ( info@emide.org ) for emIDE
+Arm ( https://launchpad.net/gcc-arm-embedded )
+ for GNU Tools for ARM Embedded Processors
+ ( gcc-arm-none-eabi )" />
+        <Value license="GNU General Public License, version 3" />
+    </Plugin>
+</CodeBlocks_plugin_manifest_file>

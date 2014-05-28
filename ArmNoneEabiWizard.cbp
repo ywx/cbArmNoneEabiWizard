@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ArmNoneEabiWizard" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Win32 Debug">
+				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option object_output=".objs/Debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option host_application="$(#cb)/devel/codeblocks.exe" />
+				<Option run_host_application_in_terminal="0" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-pipe" />
+					<Add option="-mthreads" />
+					<Add option="-fmessage-length=0" />
+					<Add option="-fexceptions" />
+					<Add option="-Winvalid-pch" />
+					<Add option="-DBUILDING_PLUGIN" />
+					<Add option="-DHAVE_W32API_H" />
+					<Add option="-D__WXMSW__" />
+					<Add option="-DWXUSINGDLL" />
+					<Add option="-DcbDEBUG" />
+					<Add option="-DCB_PRECOMP" />
+					<Add option="-DWX_PRECOMP" />
+					<Add option="-DwxUSE_UNICODE" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/sdk/wxscintilla/include" />
+					<Add directory="$(#wx.include)" />
+					<Add directory="$(#wx.lib)/gcc_dll/mswu" />
+				</Compiler>
+				<Linker>
+					<Add option="-mthreads" />
+					<Add library="codeblocks" />
+					<Add library="wxmsw28u" />
+					<Add directory="$(#cb)/devel" />
+					<Add directory="$(#wx.lib)/gcc_dll" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
+					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.dll ArmNoneEabiWizard.zip" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Win32 Release">
+				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option object_output=".objs/Release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option host_application="$(#cb)/devel/codeblocks.exe" />
+				<Option run_host_application_in_terminal="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-pipe" />
+					<Add option="-mthreads" />
+					<Add option="-fmessage-length=0" />
+					<Add option="-fexceptions" />
+					<Add option="-Winvalid-pch" />
+					<Add option="-DBUILDING_PLUGIN" />
+					<Add option="-DHAVE_W32API_H" />
+					<Add option="-D__WXMSW__" />
+					<Add option="-DWXUSINGDLL" />
+					<Add option="-DCB_PRECOMP" />
+					<Add option="-DWX_PRECOMP" />
+					<Add option="-DwxUSE_UNICODE" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/sdk/wxscintilla/include" />
+					<Add directory="$(#wx.include)" />
+					<Add directory="$(#wx.lib)/gcc_dll/mswu" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-mthreads" />
+					<Add library="codeblocks" />
+					<Add library="wxmsw28u" />
+					<Add directory="$(#cb)/devel" />
+					<Add directory="$(#wx.lib)/gcc_dll" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
+					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.dll ArmNoneEabiWizard.zip" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Linux default">
+				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option host_application="codeblocks" />
+				<Option run_host_application_in_terminal="0" />
+				<Compiler>
+					<Add option="-ansi" />
+					<Add option="-g" />
+					<Add option="`pkg-config --cflags codeblocks`" />
+					<Add option="`wx-config --cflags`" />
+					<Add option="-fPIC" />
+					<Add option="-DEXPORT_FUNC" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/sdk/wxscintilla/include" />
+				</Compiler>
+				<Linker>
+					<Add option="`pkg-config --libs codeblocks`" />
+					<Add option="`wx-config --libs`" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
+					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.so ArmNoneEabiWizard.zip" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Linux Release">
+				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option host_application="codeblocks" />
+				<Option run_host_application_in_terminal="0" />
+				<Compiler>
+					<Add option="-ansi" />
+					<Add option="-O2" />
+					<Add option="`pkg-config --cflags codeblocks`" />
+					<Add option="`wx-config --cflags`" />
+					<Add option="-fPIC" />
+					<Add option="-DEXPORT_FUNC" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/sdk/wxscintilla/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="`pkg-config --libs codeblocks`" />
+					<Add option="`wx-config --libs`" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
+					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.so ArmNoneEabiWizard.zip" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Unit filename="ArmNoneEabiWizard.cpp" />
+		<Unit filename="ArmNoneEabiWizard.h" />
+		<Unit filename="manifest.xml" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

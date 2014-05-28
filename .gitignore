@@ -1,0 +1,15 @@
+# Lines starting with '#' are considered comments.
+# Ignore any file named .gitignore.
+#.gitignore
+# Ignore .depend and .layout
+*.depend
+*.layout
+# Ignore objects and archives.
+.objs
+*.[oa]
+*.obj
+# Ignore build
+*.dll
+*.so
+*.zip
+*.cbplugin
