@@ -50,6 +50,7 @@
 				</Linker>
 				<ExtraCommands>
 					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
+					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
 					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.dll ArmNoneEabiWizard.zip" />
 					<Mode after="always" />
 				</ExtraCommands>
@@ -97,6 +98,7 @@
 				</Linker>
 				<ExtraCommands>
 					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
+					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
 					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.dll ArmNoneEabiWizard.zip" />
 					<Mode after="always" />
 				</ExtraCommands>
@@ -130,6 +132,7 @@
 				</Linker>
 				<ExtraCommands>
 					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
+					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
 					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.so ArmNoneEabiWizard.zip" />
 					<Mode after="always" />
 				</ExtraCommands>
@@ -163,6 +166,7 @@
 				</Linker>
 				<ExtraCommands>
 					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
+					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
 					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.so ArmNoneEabiWizard.zip" />
 					<Mode after="always" />
 				</ExtraCommands>

@@ -8,6 +8,8 @@
  * License:   GNU General Public License, version 3
  **************************************************************/
 
+#include <wx/filesys.h>
+
 #include <sdk.h> // Code::Blocks SDK
 #include <globals.h>
 #include <cbexception.h>
@@ -181,15 +183,39 @@ void ArmNoneEabiWizard::GetJLinkDevices(void)
     //
     // Find CSV file
     //
-    PathDeviceCSV = ConfigManager::GetExecutableFolder() + wxFILE_SEP_PATH + _T("share") + wxFILE_SEP_PATH + _T("CodeBlocks") + wxFILE_SEP_PATH + _T("JLinkDevices.csv");
+    PathDeviceCSV = _T("ArmNoneEabiWizard.zip");
+    PathDeviceCSV = ConfigManager::LocateDataFile( PathDeviceCSV, sdPluginsUser | sdDataUser | sdPluginsGlobal | sdDataGlobal );
+    if( PathDeviceCSV.IsEmpty() )
+    {
+        Manager::Get()->GetLogManager()->LogError( _T("Plugin resource not found: ") + wxString( _T("ArmNoneEabiWizard.zip") ) );
+        return; // not found
+    }
     //
     // Read csv file
     //
-    if(!FileDeviceCSV.Open(PathDeviceCSV))
+    // load csv from ZIP
+    wxFileSystem* fs = new wxFileSystem;
+    wxFSFile* f = fs->OpenFile( PathDeviceCSV + _T("#zip:jlinkdevices.csv") );
+    if( f )
     {
+        wxInputStream* is = f->GetStream();
+        char tmp[1025] = {}; // read buffer
+        while( !is->Eof() && is->CanRead() )
+        {
+            memset( tmp, 0, sizeof(tmp) );
+            is->Read( tmp, sizeof(tmp) - 1 );
+            ContentDeviceCSV  << cbC2U( (const char*) tmp );
+        }
+        delete f;
+    }
+    else
+    {
+        Manager::Get()->GetLogManager()->LogError( _T("No plugin csv file in resource: ") + PathDeviceCSV );
+        delete fs;
         return;
     }
-    ContentDeviceCSV = cbReadFileContents(FileDeviceCSV);
+    delete fs;
+
     LinesDeviceCSV = GetArrayFromString(ContentDeviceCSV, _T("\r\n"), 0);
     //
     // Parse CSV file line by line and add device to array
