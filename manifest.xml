@@ -16,4 +16,5 @@ Arm ( https://launchpad.net/gcc-arm-embedded )
  ( gcc-arm-none-eabi )" />
         <Value license="GNU General Public License, version 3" />
     </Plugin>
+    <Extra file="templates.7z" />
 </CodeBlocks_plugin_manifest_file>

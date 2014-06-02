@@ -51,6 +51,7 @@
 				<ExtraCommands>
 					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
 					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
+					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin data/templates.7z" />
 					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.dll ArmNoneEabiWizard.zip" />
 					<Mode after="always" />
 				</ExtraCommands>
@@ -99,6 +100,7 @@
 				<ExtraCommands>
 					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
 					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
+					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin data/templates.7z" />
 					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.dll ArmNoneEabiWizard.zip" />
 					<Mode after="always" />
 				</ExtraCommands>
@@ -116,6 +118,7 @@
 					<Add option="`pkg-config --cflags codeblocks`" />
 					<Add option="`wx-config --cflags`" />
 					<Add option="-fPIC" />
+					<Add option="-DcbDEBUG" />
 					<Add option="-DEXPORT_FUNC" />
 					<Add directory="$(#cb)/include" />
 					<Add directory="$(#cb)/include/scripting/include" />
@@ -133,6 +136,7 @@
 				<ExtraCommands>
 					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
 					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
+					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin data/templates.7z" />
 					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.so ArmNoneEabiWizard.zip" />
 					<Mode after="always" />
 				</ExtraCommands>
@@ -167,6 +171,7 @@
 				<ExtraCommands>
 					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
 					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
+					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin data/templates.7z" />
 					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.so ArmNoneEabiWizard.zip" />
 					<Mode after="always" />
 				</ExtraCommands>
