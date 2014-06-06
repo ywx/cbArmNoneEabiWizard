@@ -12,4 +12,4 @@
 *.dll
 *.so
 *.zip
-*.cbplugin
+#*.cbplugin
