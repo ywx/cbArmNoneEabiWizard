@@ -105,8 +105,9 @@
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
-			<Target title="Linux default">
+			<Target title="Unix Debug">
 				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option object_output=".objs/debug" />
 				<Option type="3" />
 				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --no-splash-screen --verbose -p debug" />
 				<Option compiler="gcc" />
@@ -120,14 +121,6 @@
 					<Add option="-fPIC" />
 					<Add option="-DcbDEBUG" />
 					<Add option="-DEXPORT_FUNC" />
-					<Add directory="$(#cb)/include" />
-					<Add directory="$(#cb)/include/scripting/include" />
-					<Add directory="$(#cb)/include/scripting/sqplus" />
-					<Add directory="$(#cb)/sdk/wxscintilla/include" />
-					<Add directory="$(#cb)/include/codeblocks" />
-					<Add directory="$(#cb)/include/codeblocks/scripting/include" />
-					<Add directory="$(#cb)/include/codeblocks/scripting/sqplus" />
-					<Add directory="$(#cb)/include/codeblocks/wxscintilla/include" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config --libs codeblocks`" />
@@ -141,8 +134,9 @@
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
-			<Target title="Linux Release">
+			<Target title="Unix Release">
 				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option object_output=".objs/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option host_application="codeblocks" />
@@ -154,14 +148,6 @@
 					<Add option="`wx-config --cflags`" />
 					<Add option="-fPIC" />
 					<Add option="-DEXPORT_FUNC" />
-					<Add directory="$(#cb)/include" />
-					<Add directory="$(#cb)/include/scripting/include" />
-					<Add directory="$(#cb)/include/scripting/sqplus" />
-					<Add directory="$(#cb)/sdk/wxscintilla/include" />
-					<Add directory="$(#cb)/include/codeblocks" />
-					<Add directory="$(#cb)/include/codeblocks/scripting/include" />
-					<Add directory="$(#cb)/include/codeblocks/scripting/sqplus" />
-					<Add directory="$(#cb)/include/codeblocks/wxscintilla/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />

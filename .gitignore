@@ -13,3 +13,9 @@
 *.so
 *.zip
 *.cbplugin
+# Ignore backup file.
+*.bak
+*.origin
+*.orig
+*.org
+*.old
