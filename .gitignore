@@ -9,6 +9,8 @@
 *.[oa]
 *.obj
 # Ignore build
+bin
+cbplugin
 *.dll
 *.so
 *.zip

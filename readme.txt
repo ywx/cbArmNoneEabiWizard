@@ -64,6 +64,9 @@ For information on emIDE, please see http://www.emide.org/
 
 Setup and Use
 =====================================
+
+Before Code::Blocks Release 17.12
+-------------------------------------
 1, Download A Extended Scripted Wizard Plugin for Code::Blocks source code, Build the scriptedwizard.cbplugin
    or Download prebuilt scriptedwizard.cbplugin from https://github.com/ywx/cbScriptedWizardPlugin/releases
 2, Download Arm none eabi Wizard Plugin for Code::Blocks source code, Build the ArmNoneEabiWizard.cbplugin
@@ -74,14 +77,32 @@ Setup and Use
 6, Reboot Code::Blocks, Enable the Scripted wizard in Code::Blocks Manage plugins Dialog
 7, Now New Project, Arm Embedded App will appear in New from template Dialog
 
+
+For Code::Blocks Release 17.12 or Later
+-------------------------------------
+1, Download Arm none eabi Wizard Plugin for Code::Blocks source code, Build the ArmNoneEabiWizard.cbplugin
+   or Download prebuilt ArmNoneEabiWizard.cbplugin from https://github.com/ywx/cbArmNoneEabiWizard/releases
+2, Download and Install GNU Tools for ARM Embedded Processors, Set "GNU GCC Compiler for ARM" for GNU Tools for ARM Embedded Processors in Code::Blocks Compiler settings Dialog
+3, Uncheck "Install system-wide,for all users of this machine (requires administrative rights)" and "Ask for confirmation if conflicts arise" in Code::Blocks Manage plugins Dialog, Install ArmNoneEabiWizard.cbplugin, Close Code::Blocks
+4, Extract the templates.7z in the Code::Blocks Data folder in user's dir
+5, Reboot Code::Blocks
+6, Now New Project, Arm Embedded App will appear in New from template Dialog
+
 For information on A Extended Scripted Wizard Plugin for Code::Blocks, please see https://github.com/ywx/cbScriptedWizardPlugin
 For information on ARM, please see http://www.arm.com/
 For information on GNU Tools for ARM Embedded Processors, please see https://launchpad.net/gcc-arm-embedded
 For information on Renesas, please see http://www.renesas.com/
 For information on KPIT GNU Tools, please see http://www.kpitgnutools.com/
 
+Code::Blocks Data folder in user's dir:
+On Windows
+C:\Users\user\AppData\Roaming\CodeBlocks\share\codeblocks codeblocks.exe
+Or <codeblocks install dir>\AppData\codeblocks\share\codeblocks CbLauncher.exe
+On Linux
+/home/user/.local/share/codeblocks
 
-Last updated: February 6th 2016
+
+Last updated: January 17th 2018
 
 
 
@@ -143,6 +164,9 @@ git clone git://github.com/ywx/cbArmNoneEabiWizard.git cbArmNoneEabiWizard-ReadO
 
 安装使用
 =====================================
+
+Code::Blocks Release 17.12 之前的版本
+-------------------------------------
 1, 下载 A Extended Scripted Wizard Plugin for Code::Blocks 源代码, 编译构建 scriptedwizard.cbplugin
    或 从 https://github.com/ywx/cbScriptedWizardPlugin/releases 下载预编译的 scriptedwizard.cbplugin 
 2, 下载 Arm none eabi Wizard Plugin for Code::Blocks 源代码, 编译构建 ArmNoneEabiWizard.cbplugin
@@ -153,14 +177,31 @@ git clone git://github.com/ywx/cbArmNoneEabiWizard.git cbArmNoneEabiWizard-ReadO
 6, 重启 Code::Blocks, 在 Manage plugins Dialog 中 Enable the Scripted wizard 插件
 7, 现在 New Project, Arm Embedded App 会出现在 New from template Dialog
 
+Code::Blocks Release 17.12 及以后版本
+-------------------------------------
+1, 下载 Arm none eabi Wizard Plugin for Code::Blocks 源代码, 编译构建 ArmNoneEabiWizard.cbplugin
+   或 从 https://github.com/ywx/cbArmNoneEabiWizard/releases 下载预编译的 ArmNoneEabiWizard.cbplugin 
+2, 下载并安装 GNU Tools for ARM Embedded Processors, 在 Code::Blocks Compiler settings Dialog 中,为 GNU Tools for ARM Embedded Processors 配置 "GNU GCC Compiler for ARM"
+3, 在 Code::Blocks Manage plugins Dialog 中 Uncheck "Install system-wide,for all users of this machine (requires administrative rights)" 和 "Ask for confirmation if conflicts arise", 安装构建好的 ArmNoneEabiWizard.cbplugin, 然后关闭 Code::Blocks
+4, 在 Code::Blocks Data folder in user's dir 中解压 templates.7z
+5, 重启 Code::Blocks
+6, 现在 New Project, Arm Embedded App 会出现在 New from template Dialog
+
 关于 A Extended Scripted Wizard Plugin for Code::Blocks, 请访问 https://github.com/ywx/cbScriptedWizardPlugin
 关于 ARM, 请访问 http://www.arm.com/
 关于 GNU Tools for ARM Embedded Processors, 请访问 https://launchpad.net/gcc-arm-embedded
 关于 Renesas, 请访问 http://www.renesas.com/
 关于 KPIT GNU Tools, 请访问 http://www.kpitgnutools.com/
 
+Code::Blocks Data folder in user's dir:
+在 Windows 操作系统典型路径
+C:\Users\user\AppData\Roaming\CodeBlocks\share\codeblocks 由codeblocks.exe启动
+Or <codeblocks install dir>\AppData\codeblocks\share\codeblocks 由CbLauncher.exe启动
+在 Linux 操作系统典型路径
+/home/user/.local/share/codeblocks
+
 
 Arm none eabi Wizard Plugin 只是将 emIDE Embedded Application Wizard 移植到 Code::Blocks Release。
 
 
-最后更新: 2016-2-6
+最后更新: 2018-1-17

@@ -7,9 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Win32 Debug">
-				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
-				<Option object_output=".objs/Debug" />
-				<Option external_deps="$(#cb)/devel/libcodeblocks.a;" />
+				<Option output="cbplugin/win/debug/ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option object_output=".objs/win/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --no-splash-screen --verbose -p debug" />
@@ -22,6 +21,7 @@
 					<Add option="-fmessage-length=0" />
 					<Add option="-fexceptions" />
 					<Add option="-Winvalid-pch" />
+					<Add option="-std=gnu++11" />
 					<Add option="-DBUILDING_PLUGIN" />
 					<Add option="-DHAVE_W32API_H" />
 					<Add option="-D__WXMSW__" />
@@ -31,6 +31,7 @@
 					<Add option="-DWX_PRECOMP" />
 					<Add option="-DwxUSE_UNICODE" />
 					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/include/tinyxml" />
 					<Add directory="$(#cb)/include/scripting/include" />
 					<Add directory="$(#cb)/include/scripting/sqplus" />
 					<Add directory="$(#cb)/sdk/wxscintilla/include" />
@@ -49,17 +50,16 @@
 					<Add directory="$(#wx.lib)/gcc_dll" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
-					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
-					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin data/templates.7z" />
-					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.dll ArmNoneEabiWizard.zip" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip manifest.xml" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip data/jlinkdevices.csv" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).cbplugin data/templates.7z" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).cbplugin $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Win32 Release">
-				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
-				<Option object_output=".objs/Release" />
-				<Option external_deps="$(#cb)/devel/libcodeblocks.a;" />
+				<Option output="cbplugin/win/release/ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option object_output=".objs/win/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option host_application="$(#cb)/devel/codeblocks.exe" />
@@ -71,6 +71,7 @@
 					<Add option="-fmessage-length=0" />
 					<Add option="-fexceptions" />
 					<Add option="-Winvalid-pch" />
+					<Add option="-std=gnu++11" />
 					<Add option="-DBUILDING_PLUGIN" />
 					<Add option="-DHAVE_W32API_H" />
 					<Add option="-D__WXMSW__" />
@@ -79,6 +80,7 @@
 					<Add option="-DWX_PRECOMP" />
 					<Add option="-DwxUSE_UNICODE" />
 					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/include/tinyxml" />
 					<Add directory="$(#cb)/include/scripting/include" />
 					<Add directory="$(#cb)/include/scripting/sqplus" />
 					<Add directory="$(#cb)/sdk/wxscintilla/include" />
@@ -98,56 +100,74 @@
 					<Add directory="$(#wx.lib)/gcc_dll" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
-					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
-					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin data/templates.7z" />
-					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.dll ArmNoneEabiWizard.zip" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip manifest.xml" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip data/jlinkdevices.csv" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).cbplugin data/templates.7z" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).cbplugin $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
-			<Target title="Unix Debug">
-				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
-				<Option object_output=".objs/debug" />
+			<Target title="Linux default">
+				<Option output="cbplugin/unix/debug/ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option object_output=".objs/unix/debug" />
 				<Option type="3" />
 				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --no-splash-screen --verbose -p debug" />
 				<Option compiler="gcc" />
 				<Option host_application="codeblocks" />
 				<Option run_host_application_in_terminal="0" />
 				<Compiler>
-					<Add option="-ansi" />
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add option="`pkg-config --cflags codeblocks`" />
 					<Add option="`wx-config --cflags`" />
 					<Add option="-fPIC" />
 					<Add option="-DcbDEBUG" />
-					<Add option="-DEXPORT_FUNC" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/include/tinyxml" />
+					<Add directory="$(#cb)/include/scripting/include" />
+					<Add directory="$(#cb)/include/scripting/sqplus" />
+					<Add directory="$(#cb)/sdk/wxscintilla/include" />
+					<Add directory="$(#cb)/include/codeblocks" />
+					<Add directory="$(#cb)/include/codeblocks/tinyxml" />
+					<Add directory="$(#cb)/include/codeblocks/scripting/include" />
+					<Add directory="$(#cb)/include/codeblocks/scripting/sqplus" />
+					<Add directory="$(#cb)/include/codeblocks/wxscintilla/include" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config --libs codeblocks`" />
 					<Add option="`wx-config --libs`" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
-					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
-					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin data/templates.7z" />
-					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.so ArmNoneEabiWizard.zip" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip manifest.xml" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip data/jlinkdevices.csv" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).cbplugin data/templates.7z" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).cbplugin $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
-			<Target title="Unix Release">
-				<Option output="ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
-				<Option object_output=".objs/release" />
+			<Target title="Linux Release">
+				<Option output="cbplugin/unix/release/ArmNoneEabiWizard" prefix_auto="0" extension_auto="1" />
+				<Option object_output=".objs/unix/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option host_application="codeblocks" />
 				<Option run_host_application_in_terminal="0" />
 				<Compiler>
-					<Add option="-ansi" />
+					<Add option="-std=c++11" />
 					<Add option="-O2" />
 					<Add option="`pkg-config --cflags codeblocks`" />
 					<Add option="`wx-config --cflags`" />
 					<Add option="-fPIC" />
-					<Add option="-DEXPORT_FUNC" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/include/tinyxml" />
+					<Add directory="$(#cb)/include/scripting/include" />
+					<Add directory="$(#cb)/include/scripting/sqplus" />
+					<Add directory="$(#cb)/sdk/wxscintilla/include" />
+					<Add directory="$(#cb)/include/codeblocks" />
+					<Add directory="$(#cb)/include/codeblocks/tinyxml" />
+					<Add directory="$(#cb)/include/codeblocks/scripting/include" />
+					<Add directory="$(#cb)/include/codeblocks/scripting/sqplus" />
+					<Add directory="$(#cb)/include/codeblocks/wxscintilla/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -155,10 +175,10 @@
 					<Add option="`wx-config --libs`" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="zip -j9 ArmNoneEabiWizard.zip manifest.xml" />
-					<Add after="zip -j9 ArmNoneEabiWizard.zip data/jlinkdevices.csv" />
-					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin data/templates.7z" />
-					<Add after="zip -j9 ArmNoneEabiWizard.cbplugin ArmNoneEabiWizard.so ArmNoneEabiWizard.zip" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip manifest.xml" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip data/jlinkdevices.csv" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).cbplugin data/templates.7z" />
+					<Add after="zip -j9 $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).cbplugin $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).zip" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
